@@ -36,7 +36,7 @@ python manage.py createsuperuser --username="admin" --email=""
 Rodando aplicação
 
 ```
-uvicorn core.asgi:application --reload
+uvicorn backend.asgi:application --reload
 ```
 
 As salas são criadas dinamicamente na url.
@@ -75,11 +75,11 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 import django
 
 django.setup()
+import chat.routing
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.core.asgi import get_asgi_application
 from channels.security.websocket import AllowedHostsOriginValidator
-import chat.routing
+from django.core.asgi import get_asgi_application
 
 application = ProtocolTypeRouter(
     {
