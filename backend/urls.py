@@ -2,6 +2,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('chat/', include('backend.chat.urls')),
+    path('', include('backend.chat.urls')),
     path('admin/', admin.site.urls),
 ]
